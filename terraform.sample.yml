@@ -37,6 +37,7 @@
     - consul-template
     - docker
     - logstash
+    - etcd
     - nginx
     - consul
     - dnsmasq
