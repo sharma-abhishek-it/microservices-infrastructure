@@ -37,9 +37,9 @@
     - consul-template
     - docker
     - logstash
-    - etcd
     - nginx
     - consul
+    - etcd
     - dnsmasq
 
 # ROLES - after provisioning the software that's common to all hosts, we do

@@ -22,6 +22,16 @@
   tags:
     - etcd
 
+- name: register etcd with consul
+  sudo: yes
+  copy:
+    src: etcd-service.json
+    dest: /etc/consul
+  notify:
+    - reload consul
+  tags:
+    - etcd
+
 - name: enable and start etcd
   sudo: yes
   service:
