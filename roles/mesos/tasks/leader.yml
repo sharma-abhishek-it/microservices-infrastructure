@@ -84,4 +84,16 @@
     - mesos
     - collectd
 
+- name: update mesos ui
+  sudo: yes
+  copy:
+    src: "{{ item }}"
+    dest: /usr/share/mesos/webui/master/static/js
+    mode: 0644
+  with_items:
+    - controllers.js
+    - services.js
+  tags:
+    - mesos
+
 - include: nginx-proxy.yml
