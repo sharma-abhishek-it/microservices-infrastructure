@@ -36,7 +36,7 @@ resource "openstack_compute_instance_v2" "control" {
   key_pair = "${ var.keypair_name }"
   image_name = "${ var.image_name }"
   flavor_name = "${ var.control_flavor_name }"
-  security_groups = [ "${var.short_name}-consul-common", "${var.short_name}-consul-agents", "${var.short_name}-mesos-infra", "${var.short_name}-zookeeper", "${var.short_name}-common" ]
+  security_groups = [ "${ var.security_groups }", "${var.short_name}-consul-common", "${var.short_name}-consul-agents", "${var.short_name}-mesos-infra", "${var.short_name}-zookeeper", "${var.short_name}-common" ]
   network = { uuid  = "${ var.net_id }" }
   volume = {
     volume_id = "${element(openstack_blockstorage_volume_v1.mi-control-glusterfs.*.id, count.index)}"
@@ -55,7 +55,7 @@ resource "openstack_compute_instance_v2" "resource" {
   key_pair = "${ var.keypair_name }"
   image_name = "${ var.image_name }"
   flavor_name = "${ var.resource_flavor_name }"
-  security_groups = [ "${var.short_name}-consul-common", "${var.short_name}-consul-servers", "${var.short_name}-mesos-infra", "${var.short_name}-web", "${var.short_name}-common" ]
+  security_groups = [ "${ var.security_groups }", "${var.short_name}-consul-common", "${var.short_name}-consul-servers", "${var.short_name}-mesos-infra", "${var.short_name}-web", "${var.short_name}-common" ]
   network = { uuid = "${ var.net_id }" }
   metadata = {
     dc = "${var.datacenter}"
